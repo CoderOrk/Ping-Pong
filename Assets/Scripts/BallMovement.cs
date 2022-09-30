@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 7f;
+    [SerializeField] float moveSpeedX = 7f;
+    [SerializeField] float moveSpeedY = 0;
 
     Rigidbody2D myRigidbody2D;
 
@@ -15,11 +16,17 @@ public class BallMovement : MonoBehaviour
 
     void Update()
     {
-        myRigidbody2D.velocity += new Vector2(moveSpeed, 0);
+        myRigidbody2D.velocity = new Vector2(moveSpeedX, 0f);
     }
 
-    void OnCollisionEnter(Collision other) 
+    void OnCollisionEnter2D(Collision2D other) 
     {
-        
+        moveSpeedX = -moveSpeedX;
+
+        if(other.rigidbody != null)
+        {
+            moveSpeedY = other.rigidbody.velocity.y;
+        }
+        //increment score
     }
 }

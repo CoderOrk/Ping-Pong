@@ -474,7 +474,6 @@ GameObject:
   - component: {fileID: 1194361590}
   - component: {fileID: 1194361592}
   - component: {fileID: 1194361591}
-  - component: {fileID: 1194361593}
   m_Layer: 0
   m_Name: Right
   m_TagString: Right Goal
@@ -506,7 +505,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1194361589}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 925fbb104e8eea446ae14747a3aa493f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -575,27 +574,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1194361593
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194361589}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1621088695
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +838,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3420255707465575427, guid: 8d879b082c44f6949a34e7e7c2dfc8ba, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420255707465575427, guid: 8d879b082c44f6949a34e7e7c2dfc8ba, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 925fbb104e8eea446ae14747a3aa493f, type: 2}
     - target: {fileID: 3420255707465575428, guid: 8d879b082c44f6949a34e7e7c2dfc8ba, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -916,6 +902,10 @@ PrefabInstance:
       propertyPath: bottomPadding
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3420255707465575430, guid: 8d879b082c44f6949a34e7e7c2dfc8ba, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 925fbb104e8eea446ae14747a3aa493f, type: 2}
     - target: {fileID: 3420255707465575431, guid: 8d879b082c44f6949a34e7e7c2dfc8ba, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -943,7 +933,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2005803760967837845, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
       propertyPath: moveSpeed
-      value: 0.5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005803760967837845, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
+      propertyPath: moveSpeedX
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 7942867526754816160, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
       propertyPath: m_Name
@@ -953,17 +947,25 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7942867526754816172, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942867526754816172, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7942867526754816173, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7942867526754816173, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.375
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 7942867526754816173, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.65
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 7942867526754816173, guid: 13a89b4564473934fb338fc25eb59abd, type: 3}
       propertyPath: m_LocalPosition.z
