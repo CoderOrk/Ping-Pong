@@ -4,29 +4,45 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeedX = 7f;
-    [SerializeField] float moveSpeedY = 0;
+    [SerializeField] float moveSpeedX = -7f;
+    [SerializeField] float moveSpeedY = 0f;
+    [SerializeField] float moveSpeedIncrease = 0.25f;
 
     Rigidbody2D myRigidbody2D;
+    ScoreKeeper scoreKeeper;
+    GameManager gameManager;
 
     void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        gameManager = FindObjectOfType<GameManager>();
+
+        SeverBall();
     }
 
-    void Update()
+    void SeverBall()
     {
         myRigidbody2D.velocity = new Vector2(moveSpeedX, 0f);
+
     }
 
     void OnCollisionEnter2D(Collision2D other) 
     {
-        moveSpeedX = -moveSpeedX;
-
-        if(other.rigidbody != null)
+        if(other.gameObject.tag == "Right Goal")
         {
-            moveSpeedY = other.rigidbody.velocity.y;
+            scoreKeeper.IncreaseScore();
+            moveSpeedX += moveSpeedIncrease;
         }
-        //increment score
+    }
+
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "Left Goal")
+        {
+            Destroy(gameObject);
+            Debug.Log("You Lose");
+            gameManager.ReloadScene();
+        }  
     }
 }
