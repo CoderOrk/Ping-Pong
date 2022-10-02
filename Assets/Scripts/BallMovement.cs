@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeedX = -7f;
-    [SerializeField] float moveSpeedY = 0f;
-    [SerializeField] float moveSpeedIncrease = 0.25f;
+    [SerializeField] float startingSpeed = 5f;
+    [SerializeField] float maxSpeed = 40f;
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float moveSpeedIncrease = 1.25f;
 
     Rigidbody2D myRigidbody2D;
     ScoreKeeper scoreKeeper;
@@ -18,12 +19,12 @@ public class BallMovement : MonoBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         gameManager = FindObjectOfType<GameManager>();
 
-        SeverBall();
+        SeverBall(-moveSpeed, Random.value * moveSpeed);
     }
 
-    void SeverBall()
+    void SeverBall(float x, float y)
     {
-        myRigidbody2D.velocity = new Vector2(moveSpeedX, 0f);
+        myRigidbody2D.velocity = new Vector2(x, y);
 
     }
 
@@ -32,7 +33,17 @@ public class BallMovement : MonoBehaviour
         if(other.gameObject.tag == "Right Goal")
         {
             scoreKeeper.IncreaseScore();
-            moveSpeedX += moveSpeedIncrease;
+
+            float signOfX = Mathf.Sign(myRigidbody2D.velocity.x);
+            moveSpeed *= moveSpeedIncrease * signOfX;
+
+            if(Mathf.Abs(moveSpeed) > maxSpeed)
+            {
+                moveSpeed = maxSpeed * signOfX;
+            }
+            
+            Debug.Log("Ball Speed: " + moveSpeed);
+            myRigidbody2D.velocity = new Vector2(moveSpeed, myRigidbody2D.velocity.y);
         }
     }
 
