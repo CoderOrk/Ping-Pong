@@ -30,7 +30,7 @@ public class BallMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.gameObject.tag == "Right Goal")
+        if(other.gameObject.tag == "Right Goal" && scoreKeeper != null)
         {
             scoreKeeper.IncreaseScore();
 
@@ -53,7 +53,7 @@ public class BallMovement : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log("You Lose");
-            gameManager.ReloadScene();
+            gameManager.LoadMenu();
         }  
     }
 }
